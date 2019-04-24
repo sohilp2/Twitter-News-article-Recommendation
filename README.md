@@ -1,3 +1,3 @@
 # News_article_recommendation
 
-Project for Stat689
+Project for Stat 689
