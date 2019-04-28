@@ -58,7 +58,7 @@ Washington Post. We identify them as active news readers.
   - Popularity = Number of Followers / Number of Friends
 - Filter users based on their twitter activity and popularity
 - Collect information from Twitter profiles of these filtered users
-![Collecting Twietter Users Data](/Images/1.0 Twitter Flow.png)
+![Collecting Twietter Users Data](https://raw.githubusercontent.com/jayshah5696/News_article_recommendation/master/Images/1.0 Twitter Flow.png)
 
 ### 2. Analyze users’ Tweets
 The tweets contains URLs, Usernames, non-english words, punctuations and
