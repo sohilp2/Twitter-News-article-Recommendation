@@ -89,7 +89,7 @@ analysis of words (WordNetLemmatizer)
 
 ### 3. Cluster users according to their interests
 We can cluster users based on their similarity of interests retrieved from their tweets and that requires vectorized representation of tweets.
-- Find TF-IDF matrix (Library : TfidfVectorizer from sklearn)
+- Find TF-IDF matrix **(Library : TfidfVectorizer from sklearn)**
   - TF-IDF stands for Term Frequency- Inverse Document Frequency
   - TF : Gives frequency of words in each user’s tweets
   - IDF : Calculates the weight of rare words across all users’ tweets. The words that occur rarely in the corpus have a high IDF score.
@@ -104,3 +104,33 @@ We can cluster users based on their similarity of interests retrieved from their
     - The cosine of the angle between the vectors is a good indicator of similarity
       ![cosine](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/3.0cosine.png)
     - Reduce dimension matrix using multi-dimension-scaling. **(Library: Skleran’s MDS)**
+- Selection of optimal K with Elbow Method
+  - The elbow method, in which the sum of squares at each number of clusters is calculated and graphed, and the user looks for a change of slope from steep to shallow (an elbow) to determine the optimal number of clusters.
+  ![optimalK](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/SelectK.png)
+  - We created 5 clusters and top words in 5 clusters are shown below.
+  ![SelectedClusters](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/3.0Clusters.png)
+  - Clusterd User's Vizualization:
+    - Here, we have used Manifold learning for vizualization.High-dimensional datasets can be very difficult to visualize. While data in two or three dimensions can be plotted to show the inherent structure of the data, equivalent high-dimensional plots are much less intuitive. To aid visualization of the structure of a dataset, the dimension must be reduced in some way.
+
+    - The simplest way to accomplish this dimensionality reduction is by taking a random projection of the data. Though this allows some degree of visualization of the data structure, the randomness of the choice leaves much to be desired. In a random projection, it is likely that the more interesting structure within the data will be lost.
+
+    - Multidimensional scaling (MDS) seeks a low-dimensional representation of the data in which the distances respect well the distances in the original high-dimensional space.
+
+    - In general, is a technique used for analyzing similarity or dissimilarity data. MDS attempts to model similarity or dissimilarity data as distances in a geometric spaces. The data can be ratings of similarity between objects, interaction frequencies of molecules, or trade indices between countries
+
+    ![Users Clusters](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/UsersClusters.png)
+
+### 4. Perform Sentiment Analysis and Topic Modelling
+
+Sentiment analysis -Computational study of opinions, sentiments, evaluations, attitudes, appraisal, affects, views, emotions, subjectivity, etc., expressed in text.
+
+It is also called opinion mining
+
+![Sentiment Analysis](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/SentimentAnalysis.png)
+
+We have used pretrained model from Textblob library that gives two results:
+
+**Subjectivity and Polarity**
+- Polarity is score between [-1,1], where 0 indicates neutral, +1 indicates a very positive sentiment and -1 represents a very negative sentiment.
+- Subjectivity is score between [0,1], where 0.0 is very objective and 1.0 is very subjective.
+- Subjective sentence expresses some personal feelings, views, beliefs, opinions, allegations, desires, beliefs, suspicions, and speculations where as Objective sentences are factual.
