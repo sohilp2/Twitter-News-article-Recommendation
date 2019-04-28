@@ -39,12 +39,12 @@ personalized news articles which user would share on Twitter. This can
 increase news articles and news service’s popularity.
 
 ### Project Flow:
-1. **Collect active Twitter users’ data**
-2. **Analyze users’ tweets**
-3. **Cluster users according to their interests**
-4. **Perform sentiment analysis and topic modeling**
-5. **Collect and analyze news articles**
-6. **Get user’s Twitter handle & Recommend news articles**
+1. [**Collect active Twitter users’ data**](https://github.com/jayshah5696/News_article_recommendation#1-collect-active-twitter-users-data)
+2. [**Analyze users’ tweets**](https://github.com/jayshah5696/News_article_recommendation#2-analyze-users-tweets)
+3. [**Cluster users according to their interests**](https://github.com/jayshah5696/News_article_recommendation#3-cluster-users-according-to-their-interests)
+4. [**Perform sentiment analysis and topic modeling**](https://github.com/jayshah5696/News_article_recommendation#4-perform-sentiment-analysis-and-topic-modelling)
+5. [**Collect and analyze news articles**](https://github.com/jayshah5696/News_article_recommendation#5-collect-and-analyze-news-article)
+6. [**Get user’s Twitter handle & Recommend news articles**](https://github.com/jayshah5696/News_article_recommendation#6-get-user’s-twitter-handle-&-recommend-news-articles)
 
 
 ### 1. Collect active Twitter users’ data
@@ -140,3 +140,7 @@ We have used pretrained model from Textblob library that gives two results:
 [Interactive Vizualization of Topic model for Cluster 1](https://htmlpreview.github.io/?https://github.com/jayshah5696/News_article_recommendation/blob/master/lda.html)
 
 [Interactive Vizualization of Topic model for Cluster 2](https://htmlpreview.github.io/?https://github.com/jayshah5696/News_article_recommendation/blob/master/lda.html)
+
+### 5. Collect and analyze news articles
+
+### 6. Get user’s Twitter handle & Recommend news articles
