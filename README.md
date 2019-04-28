@@ -134,3 +134,8 @@ We have used pretrained model from Textblob library that gives two results:
 - Polarity is score between [-1,1], where 0 indicates neutral, +1 indicates a very positive sentiment and -1 represents a very negative sentiment.
 - Subjectivity is score between [0,1], where 0.0 is very objective and 1.0 is very subjective.
 - Subjective sentence expresses some personal feelings, views, beliefs, opinions, allegations, desires, beliefs, suspicions, and speculations where as Objective sentences are factual.
+
+
+
+![Interactive Vizualization of Topic model for Cluster 1](https://htmlpreview.github.io/?https://github.com/jayshah5696/News_article_recommendation/blob/master/lda.html)
+![Interactive Vizualization of Topic model for Cluster 2](https://htmlpreview.github.io/?https://github.com/jayshah5696/News_article_recommendation/blob/master/lda.html)
