@@ -58,7 +58,7 @@ Washington Post. We identify them as active news readers.
   - Popularity = Number of Followers / Number of Friends
 - Filter users based on their twitter activity and popularity
 - Collect information from Twitter profiles of these filtered users
-![Collecting Twietter Users Data](Images/1.0 Twitter Flow.png)
+![Collecting Twietter Users Data](/Images/1.0 Twitter Flow.png)
 
 ### 2. Analyze users’ Tweets
 The tweets contains URLs, Usernames, non-english words, punctuations and
@@ -84,7 +84,7 @@ analysis of words (WordNetLemmatizer)
     - Caring - Car : Stemming
     - Caring - Care : Lemmatization
 
-![Text Cleaning](Images/2.0 Text cleaning.png)
+![Text Cleaning](/Images/2.0 Text cleaning.png)
 
 ### 3. Cluster users according to their interests
 We can cluster users based on their similarity of interests retrieved from their tweets and that requires vectorized representation of tweets.
@@ -93,7 +93,7 @@ We can cluster users based on their similarity of interests retrieved from their
   - TF : Gives frequency of words in each user’s tweets
   - IDF : Calculates the weight of rare words across all users’ tweets. The words that occur rarely in the corpus have a high IDF score.
 
-    ![TDIF](Images/3.0 TDIF.png)
+    ![TDIF](/Images/3.0 TDIF.png)
 
   - TF-IDF is a weight that ranks the importance of a term in its contextual document corpus.
   - Perform K-means clustering to cluster users based on tf-idf matrix.
@@ -101,5 +101,5 @@ We can cluster users based on their similarity of interests retrieved from their
     - Distance Matrix = 1 - Cosine Similarity of users’ tweets
     - Cosine similarity = (dot product of two vectors) / (product of vectors’ magnitudes)
     - The cosine of the angle between the vectors is a good indicator of similarity
-      ![cosine](Images/3.0 cosine.png)
+      ![cosine](/Images/3.0 cosine.png)
     - Reduce dimension matrix using multi-dimension-scaling. **(Library: Skleran’s MDS)**
