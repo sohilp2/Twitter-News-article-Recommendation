@@ -137,5 +137,6 @@ We have used pretrained model from Textblob library that gives two results:
 
 
 
-![Interactive Vizualization of Topic model for Cluster 1](https://htmlpreview.github.io/?https://github.com/jayshah5696/News_article_recommendation/blob/master/lda.html)
-![Interactive Vizualization of Topic model for Cluster 2](https://htmlpreview.github.io/?https://github.com/jayshah5696/News_article_recommendation/blob/master/lda.html)
+[Interactive Vizualization of Topic model for Cluster 1](https://htmlpreview.github.io/?https://github.com/jayshah5696/News_article_recommendation/blob/master/lda.html)
+
+[Interactive Vizualization of Topic model for Cluster 2](https://htmlpreview.github.io/?https://github.com/jayshah5696/News_article_recommendation/blob/master/lda.html)
