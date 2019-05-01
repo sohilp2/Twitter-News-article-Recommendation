@@ -283,5 +283,3 @@ python test.py <user_id>
 
 - How to recommend news articles to a user if he or she does not have any tweets? (Cold Start Problem)
 - How to evaluate the performance of a recommendation system?
-- Topic Modelling and retrieving users’ data are bottlenecks as they need to be updated very frequently.
-- Scale this model on large dataset
