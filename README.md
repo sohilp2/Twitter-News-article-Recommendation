@@ -136,6 +136,17 @@ We have used pretrained model from Textblob library that gives two results:
 - Subjective sentence expresses some personal feelings, views, beliefs, opinions, allegations, desires, beliefs, suspicions, and speculations where as Objective sentences are factual.
 
 
+**Topic Modeling**
+
+![Topic_model](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/Topic_model.png)
+![Topic_model2](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/Topic_model2.png)
+
+**Application in our problem**
+
+- Using LDA Mallet model for topic modelling of each individual cluster. It is more efficient than Gensim’s LDA package requiring O(corpus).
+- Tuning of number of topic for each cluster accomplished using the coherence measure: using C_v measure (combining normalized pointwise similarity and cosine similarity)
+
+**Topic Model Interactive Visualization**
 
 [Interactive Vizualization of Topic model for Cluster 1](https://htmlpreview.github.io/?https://github.com/jayshah5696/News_article_recommendation/blob/master/lda.html)
 
