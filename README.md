@@ -1,18 +1,18 @@
 # News Article Recommendation
 
-### Project for Stat689
+### Project of Stat-689
 ##### Submitted by : Arch Desai, Sohil Parsana, Jay Shah
 
 ### Motivation:
-Online news articles reading has exploded as the web provides access to
+Online news reading has exploded as the web provides access to
 millions of news sources from around the world. The sheer volume of
-articles can be overwhelming to readers.
+articles can be overwhelming to readers sometimes.
 
 **A key challenge of news
 service website is help users to find news articles that are
 interesting to read.** This is advantageous to both users and news
 service, as it enables the user to rapidly find what he or she needs and
-the news service to help retain and increase customer base
+the news service to help retain and increase customer base.
 
 
 ### Objective of the Project:
@@ -122,17 +122,17 @@ We can cluster users based on their similarity of interests retrieved from their
 
 ### 4. Perform Sentiment Analysis and Topic Modelling
 
-Sentiment analysis -Computational study of opinions, sentiments, evaluations, attitudes, appraisal, affects, views, emotions, subjectivity, etc., expressed in text.
+Sentiment analysis - Computational study of opinions, sentiments, evaluations, attitudes, appraisal, affects, views, emotions, subjectivity that are expressed in text.
 
-It is also called opinion mining
+It is also called opinion mining.
 
 ![Sentiment Analysis](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/SentimentAnalysis.png)
 
 We have used pretrained model from Textblob library that gives two results:
 
 **Subjectivity and Polarity**
-- Polarity is score between [-1,1], where 0 indicates neutral, +1 indicates a very positive sentiment and -1 represents a very negative sentiment.
-- Subjectivity is score between [0,1], where 0.0 is very objective and 1.0 is very subjective.
+- Polarity score is between [-1,1], where 0 indicates neutral, +1 indicates a very positive sentiment and -1 represents a very negative sentiment.
+- Subjectivity score is between [0,1], where 0.0 is very objective and 1.0 is very subjective.
 - Subjective sentence expresses some personal feelings, views, beliefs, opinions, allegations, desires, beliefs, suspicions, and speculations where as Objective sentences are factual.
 
 
@@ -142,32 +142,34 @@ We have used pretrained model from Textblob library that gives two results:
 
 Each topic is a distribution of words; each document is a mixture of corpus-wide topics; and each word is drawn from one of those topics.
 
-In reality, we only observe documents. The other structures are hidden variables. Our goal to infer the hidden variables.
+In reality, we only observe documents. The other structures are hidden variables. Our goal is to infer the hidden variables.
+
+A simple LDA algorithm is described below:
 
 ![Topic_model2](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/Topic_model2.png)
 
-- Per-document topics proportions 𝜃_𝑑 is a multinomial distribution, which is generated from Dirichlet distribution parameterized by 𝛼.
+Here,
+-Per-document topics proportions 𝜃_𝑑 is a multinomial distribution, which is generated from Dirichlet distribution parameterized by 𝛼.
 
-- Smilarly, topics 𝛽_𝑘 is also a multinomial distribution, which is generated from Dirichlet distribution parameterized by 𝜂.
+- Similarly, topics 𝛽_𝑘 is also a multinomial distribution, which is generated from Dirichlet distribution parameterized by 𝜂.
 
 - For each word 𝑛, its topic 𝑍_(𝑑,𝑛) is drawn from document topic proportions 𝜃_𝑑.
 Then, we draw the word 𝑊_(𝑑,𝑛) from the topic 𝛽_𝑘, where 𝑘=𝑍_(𝑑,𝑛).
 
 
-**Application in our problem**
-
-- Using LDA Mallet model for topic modelling of each individual cluster. It is more efficient than Gensim’s LDA package requiring O(corpus).
-- Tuning of number of topic for each cluster accomplished using the coherence measure: using C_v measure (combining normalized pointwise similarity and cosine similarity)
-- There are 3 types of Topic Model gerneration
+**Application to the recommendation problem**
+In our case, following approach for topic model is adopted:
+- Instead of LDA, we have used LDA Mallet model for topic modelling of each individual cluster. It is more efficient than Gensim’s LDA package requiring O(corpus).
+- Tuning of number of topics for each cluster accomplished using the coherence measure: using C_v measure (combining normalized pointwise similarity and cosine similarity score).This measure (CV) combines the indirect cosine measure with the NPMI and the boolean sliding window. This combination has been overlooked so far in the literature. Also, the best direct coherence measure (CP) found by our study is a new combination.
+- It can be clearly seen that the LDA posterior probability model is intractable for exact solution. Hence, several bayesian approaches to solve the model are adopted. Popular ones include:
   1. EM
   2. Variational EM
   3. Full Gibbs estimating LDA generative model
-
-The best performing coherence measure (the most left column) is a new combination found by systematic study of the conguration space of  coherence measures.
-
-This measure (CV) combines the indirect cosine measure with the NPMI and the boolean sliding window. This combination has been overlooked so far in the literature. Also, the best direct coherence measure (CP) found by our study is a new combination.
+  4. Variational Bayes sampling (used in our case)
 
 **Topic Model Interactive Visualization**
+
+After following this approach, we can get tuned topic model for each cluster. An interactive way to viusalize the topics can be found in the following visualizations:
 
 [Interactive Vizualization of Topic model for Cluster 1](https://htmlpreview.github.io/?https://github.com/jayshah5696/News_article_recommendation/blob/master/lda.html)
 
@@ -192,13 +194,12 @@ Newspaper is a Python module used for extracting and parsing newspaper articles.
 
 ### 6. Get user’s Twitter handle & Recommend news articles
 
-
 There are two main types of collaborative filtering: user-based and item-based. Note that the two are entirely symmetric (or more precisely the transpose of each other)
 1. **Content-based Filtering**
   - Based on the tweets of a user, we can identify his or her interests.
   - Based on the similarity of user’s interests and news article’s content/tags/headlines, we can recommend news articles.
-  - The approach has intuitive appeal: If a user posts  ten tweets having the word “Clinton,” user would probably like future “Clinton”-tagged news articles.
-  - Example- Amazon( Recommendation based on recently viwed items)
+  - The approach has an intuitive appeal: If a user posts ten tweets having the word “Clinton,” user would probably like future “Clinton”-tagged news articles.
+  - Example- Amazon (Recommendation based on recently viwed items)
   - Shortcomings of this method:
     - Since, rare words have large weightage in the algorithm it sometimes degrades the performance.
     - For example, if a user’s one tweet contains word “election”, he would get recommendation of news articles tagged election as it is a rare word and higher weightage is given to it.
@@ -207,7 +208,7 @@ There are two main types of collaborative filtering: user-based and item-based. 
   - Based on tweets of a user, we can identify a cluster in which user belongs to.
   - Based on the topics of each cluster, we can recommend news article to a user
   - For example, If a user tweets about election, he or she can be assigned to a cluster of users who have read and retweeted news articles that our user isn't aware of on the topic of election and we can recommend it to a user
-    - Example - Amazon (Customer who bought this item also bought)
+  - Example - Amazon (Customer who bought this item also bought)
   -  Shortcoming:
      - this approach fails at recommending newly-published, unexplored articles: articles that are relevant to groups of readers but hadn’t yet been read by any reader in that group.
 
@@ -256,7 +257,7 @@ There are two main types of collaborative filtering: user-based and item-based. 
 #### Final Pipeline
 ![FinalPipeline](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/Final_pipeline.png)
 
-- Currently we have already trained this on latest few articles:
+- Currently we have already trained this model on latest few articles.
 - If you want to try this model, you can clone this repo and run following code in your prompt.
 - Before running you make sure that you have access to the twitter Authentication and change in model/config_model.ini file.
  ```sh
