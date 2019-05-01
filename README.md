@@ -247,7 +247,7 @@ There are two main types of collaborative filtering: user-based and item-based. 
 |    World News    	|    4    	|    https://www.cnn.com/2019/04/15/australia/australia-racism-media-christchurch-attack-intl/index.html    	|    http://www.nytimes.com/2019/04/24/opinion/rwanda-genocide.html    	|
 
 - Sample Articles identified wih the Clusters:
-![Recommendation2](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/6.0_numbers_identified.png)
+![Recommendation2](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/6.0_clusters.jpeg)
 
 - Here we added weight to our recommendation personalized by individual user
 - After user has been classified into clusters, we will calculate similarity score of user’s interest with identified articles within each clusters.
