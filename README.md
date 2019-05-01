@@ -3,8 +3,8 @@
 ### Project for Stat689
 ##### Submitted by : Arch Desai, Sohil Parsana, Jay Shah
 
-### Background:
-Reading the news online has exploded as the web provides access to
+### Motivation:
+Online news articles reading has exploded as the web provides access to
 millions of news sources from around the world. The sheer volume of
 articles can be overwhelming to readers.
 
@@ -15,7 +15,7 @@ service, as it enables the user to rapidly find what he or she needs and
 the news service to help retain and increase customer base
 
 
-### Goal of the Project:
+### Objective of the Project:
 Objective of the project is to build a hybrid-filtering personalized news
 articles recommendation system which can suggest articles from popular
 news service providers based on reading history of twitter users who
