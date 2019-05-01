@@ -144,30 +144,32 @@ Each topic is a distribution of words; each document is a mixture of corpus-wide
 
 In reality, we only observe documents. The other structures are hidden variables. Our goal to infer the hidden variables.
 
+A simple LDA algorithm is described below:
+
 ![Topic_model2](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/Topic_model2.png)
 
-- Per-document topics proportions 𝜃_𝑑 is a multinomial distribution, which is generated from Dirichlet distribution parameterized by 𝛼.
+Here,
+-Per-document topics proportions 𝜃_𝑑 is a multinomial distribution, which is generated from Dirichlet distribution parameterized by 𝛼.
 
-- Smilarly, topics 𝛽_𝑘 is also a multinomial distribution, which is generated from Dirichlet distribution parameterized by 𝜂.
+- Similarly, topics 𝛽_𝑘 is also a multinomial distribution, which is generated from Dirichlet distribution parameterized by 𝜂.
 
 - For each word 𝑛, its topic 𝑍_(𝑑,𝑛) is drawn from document topic proportions 𝜃_𝑑.
 Then, we draw the word 𝑊_(𝑑,𝑛) from the topic 𝛽_𝑘, where 𝑘=𝑍_(𝑑,𝑛).
 
 
-**Application in our problem**
-
-- Using LDA Mallet model for topic modelling of each individual cluster. It is more efficient than Gensim’s LDA package requiring O(corpus).
-- Tuning of number of topic for each cluster accomplished using the coherence measure: using C_v measure (combining normalized pointwise similarity and cosine similarity)
-- There are 3 types of Topic Model gerneration
+**Application to the recommendation problem**
+In our case, following approach to doing topic model is adopted: 
+- Instead of LDA, we have used LDA Mallet model for topic modelling of each individual cluster. It is more efficient than Gensim’s LDA package requiring O(corpus).
+- Tuning of number of topic for each cluster accomplished using the coherence measure: using C_v measure (combining normalized pointwise similarity and cosine similarity score).This measure (CV) combines the indirect cosine measure with the NPMI and the boolean sliding window. This combination has been overlooked so far in the literature. Also, the best direct coherence measure (CP) found by our study is a new combination.
+- It is clearly seen that the LDA posterior probability model is intractable for exact solution. Hence, several bayesian approaches to solve the model are adopted. Popular ones include:
   1. EM
   2. Variational EM
   3. Full Gibbs estimating LDA generative model
-
-The best performing coherence measure (the most left column) is a new combination found by systematic study of the conguration space of  coherence measures.
-
-This measure (CV) combines the indirect cosine measure with the NPMI and the boolean sliding window. This combination has been overlooked so far in the literature. Also, the best direct coherence measure (CP) found by our study is a new combination.
-
+  4. Variational Bayes sampling (used in our case)
+  
 **Topic Model Interactive Visualization**
+
+After following this approach, we get out tuned topic model for each cluster. An interactive way to viusalize the topics can be found in the following visualizations:
 
 [Interactive Vizualization of Topic model for Cluster 1](https://htmlpreview.github.io/?https://github.com/jayshah5696/News_article_recommendation/blob/master/lda.html)
 
