@@ -243,6 +243,7 @@ There are two main types of collaborative filtering: user-based and item-based. 
 |    Trump News    	|    1    	|    https://www.cnn.com/2019/04/24/politics/presidential-tax-returns-states-2020-trump/index.html    	|    http://www.nytimes.com/2019/04/24/us/politics/russia-2020-election-trump.html#commentsContainer    	|
 |    Terrorist Attack    	|    2    	|    https://www.cnn.com/2019/04/24/investing/ford-rivian/index.html    	|    http://www.nytimes.com/interactive/2019/04/23/world/asia/sri-lanka-isis-religious-ethnic-tensions-map.html    	|
 |    Entertainment News    	|    3    	|    https://www.cnn.com/2019/01/30/business/kohls-weight-watchers/index.html    	|    http://www.nytimes.com/2019/04/24/sports/damian-lillard-portland-trail-blazers.html    	|
+|    World News    	|    4    	|    https://www.cnn.com/2019/04/15/australia/australia-racism-media-christchurch-attack-intl/index.html    	|    http://www.nytimes.com/2019/04/24/opinion/rwanda-genocide.html    	|
 
 - Sample Articles identified wih the Clusters:
 ![Recommendation2](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/6.0_numbers_identified.png)
@@ -257,9 +258,11 @@ There are two main types of collaborative filtering: user-based and item-based. 
 
 - Currently we have already trained this on latest few articles:
 - If you want to try this model, you can clone this repo and run following code in your prompt.
-- Before running you make sure that you have access to the twitter Authentication
+- Before running you make sure that you have access to the twitter Authentication and change in model/config_model.ini file.
  ```sh
 python test.py <user_id>
+# example
+# python test.py katyperry
  ```
 
 - And if you want to run this analysis on current data, you can create an Anaconda env with provided requirement file.
