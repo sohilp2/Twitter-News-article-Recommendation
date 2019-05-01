@@ -221,7 +221,7 @@ There are two main types of collaborative filtering: user-based and item-based. 
  -  The different methods for hybridization are shown below
 
  |    Method                   	|  Description   	|
- |-----------------------------:	|-----------------------------------------------------------------------------------------------------------------------:|
+ |:-----------------------------:	|:-----------------------------------------------------------------------------------------------------------------------:|
  |    Weighted  | The scores (or votes) of several recommendation techniques are combined together to produce a single recommendation|
  |    Switching   | The system switches between recommendation techniques depending on the current   situation.For example, in earlier phases, one might use a knowledge-based recommender system to avoid cold-start issues|
  |    Mixed  | Recommendations from several different recommenders are presented at the same time	|
