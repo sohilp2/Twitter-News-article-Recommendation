@@ -252,7 +252,7 @@ There are two main types of collaborative filtering: user-based and item-based. 
 - After user has been classified into clusters, we will calculate similarity score of user’s interest with identified articles within each clusters.
 - Weight = Topic Modeling Normalized Prob(80%) + Sentiment Score (20%)
 - Based on this weight criteria we will rank the articles personalized for each user
-
+- We have used Jackard Similarity here.
 #### Final Pipeline
 ![FinalPipeline](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/Final_pipeline.png)
 
@@ -262,7 +262,7 @@ There are two main types of collaborative filtering: user-based and item-based. 
  ```sh
 python test.py <user_id>
 # example
-# python test.py katyperry
+# python test.py davidjonesOYW
  ```
 
 - And if you want to run this analysis on current data, you can create an Anaconda env with provided requirement file.
