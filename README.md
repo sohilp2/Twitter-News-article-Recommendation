@@ -207,6 +207,28 @@ There are two main types of collaborative filtering: user-based and item-based. 
   - Based on tweets of a user, we can identify a cluster in which user belongs to.
   - Based on the topics of each cluster, we can recommend news article to a user
   - For example, If a user tweets about election, he or she can be assigned to a cluster of users who have read and retweeted news articles that our user isn't aware of on the topic of election and we can recommend it to a user
-Example - Amazon (Customer who bought this item also bought)
-Shortcoming:
- this approach fails at recommending newly-published, unexplored articles: articles that are relevant to groups of readers but hadn’t yet been read by any reader in that group.
+    - Example - Amazon (Customer who bought this item also bought)
+  -  Shortcoming:
+     - this approach fails at recommending newly-published, unexplored articles: articles that are relevant to groups of readers but hadn’t yet been read by any reader in that group.
+
+
+![Recommendation](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/6.0_recommendations.png)
+
+
+3. **Hybrid Filtering**
+
+ - In these methods, a combination of both recommendation algorithms are used to maximize advantage and minimize the drawbacks of both algorithms.
+ -  The different methods for hybridization are shown below
+
+ |    Method                   	|  Description   	|
+ |-----------------------------:	|-----------------------------------------------------------------------------------------------------------------------:|
+ |    Weighted  |    The scores (or votes) of several recommendation techniques are combined together to produce a single recommendation|
+ |    Switching   |    The system switches between recommendation techniques depending on the current   situation.For example, in earlier phases, one might use a knowledge-based recommender system to avoid cold-start issues|
+ |    Mixed  |    Recommendations from several different recommenders are presented at the same time	|
+ |    Feature   combination	|    Features from different recommendation data sources are thrown together into a single   recommendation algorithm. Similarity with Stacking |
+
+**Our Approach (Feature Combination)**
+
+- We get the news articles based on the topics of a cluster in which user belongs to.
+- We compare the content of news articles to the content of a user’s tweets and find similarity
+- We rank the articles based on similarity with users personal interest and recommend to users.
