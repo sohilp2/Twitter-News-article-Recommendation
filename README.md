@@ -283,3 +283,8 @@ python test.py <user_id>
 
 - How to recommend news articles to a user if he or she does not have any tweets? (Cold Start Problem)
 - How to evaluate the performance of a recommendation system?
+
+
+Project can be found at following link:
+[Project_code](https://nbviewer.jupyter.org/github/jayshah5696/News_article_recommendation/blob/581d0ca29a366121f28f0529e684cb39ec635a48/Final_notebook.ipynb)
+Alternatively, this note book is also devided into train and test script.
