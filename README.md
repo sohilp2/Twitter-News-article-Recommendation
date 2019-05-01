@@ -222,13 +222,62 @@ There are two main types of collaborative filtering: user-based and item-based. 
 
  |    Method                   	|  Description   	|
  |-----------------------------:	|-----------------------------------------------------------------------------------------------------------------------:|
- |    Weighted  |    The scores (or votes) of several recommendation techniques are combined together to produce a single recommendation|
- |    Switching   |    The system switches between recommendation techniques depending on the current   situation.For example, in earlier phases, one might use a knowledge-based recommender system to avoid cold-start issues|
- |    Mixed  |    Recommendations from several different recommenders are presented at the same time	|
- |    Feature   combination	|    Features from different recommendation data sources are thrown together into a single   recommendation algorithm. Similarity with Stacking |
+ |    Weighted  | The scores (or votes) of several recommendation techniques are combined together to produce a single recommendation|
+ |    Switching   | The system switches between recommendation techniques depending on the current   situation.For example, in earlier phases, one might use a knowledge-based recommender system to avoid cold-start issues|
+ |    Mixed  | Recommendations from several different recommenders are presented at the same time	|
+ |    Feature   combination	|  Features from different recommendation data sources are thrown together into a single   recommendation algorithm. Similarity with Stacking |
 
 **Our Approach (Feature Combination)**
 
 - We get the news articles based on the topics of a cluster in which user belongs to.
 - We compare the content of news articles to the content of a user’s tweets and find similarity
 - We rank the articles based on similarity with users personal interest and recommend to users.
+
+
+**Collaborative Filtering Results**
+
+|        	|        	|    Example Recommended Article    	|  	|
+|:------------------------:	|:-------------:	|:----------------------------------------------------------------------------------------------------:	|:----------------------------------------------------------------------------------------------------------------:	|
+|        	|    Cluster    	|    CNN    	|    NYTimes    	|
+|    Earth Day    	|    0    	|    https://www.cnn.com/2019/04/24/entertainment/top-credit-cards-for-those-with-excellent-credit?    	|    https://www.nytimes.com/2019/04/24/opinion/california-wildfire-climate.html    	|
+|    Trump News    	|    1    	|    https://www.cnn.com/2019/04/24/politics/presidential-tax-returns-states-2020-trump/index.html    	|    http://www.nytimes.com/2019/04/24/us/politics/russia-2020-election-trump.html#commentsContainer    	|
+|    Terrorist Attack    	|    2    	|    https://www.cnn.com/2019/04/24/investing/ford-rivian/index.html    	|    http://www.nytimes.com/interactive/2019/04/23/world/asia/sri-lanka-isis-religious-ethnic-tensions-map.html    	|
+|    Entertainment News    	|    3    	|    https://www.cnn.com/2019/01/30/business/kohls-weight-watchers/index.html    	|    http://www.nytimes.com/2019/04/24/sports/damian-lillard-portland-trail-blazers.html    	|
+
+- Sample Articles identified wih the Clusters:
+![Recommendation2](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/6.0_numbers_identified.png)
+
+- Here we added weight to our recommendation personalized by individual user
+- After user has been classified into clusters, we will calculate similarity score of user’s interest with identified articles within each clusters.
+- Weight = Topic Modeling Normalized Prob(80%) + Sentiment Score (20%)
+- Based on this weight criteria we will rank the articles personalized for each user
+
+#### Final Pipeline
+![FinalPipeline](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/Final_pipeline.png)
+
+- Currently we have already trained this on latest few articles:
+- If you want to try this model, you can clone this repo and run following code in your prompt.
+- Before running you make sure that you have access to the twitter Authentication
+ ```sh
+python test.py <user_id>
+ ```
+
+- And if you want to run this analysis on current data, you can create an Anaconda env with provided requirement file.
+
+```sh
+# For Windows users# Note: <> denotes changes to be made
+
+conda create --name <env_name> requirements.yml
+
+# Make sure you have updateed the provided config file
+python train.py config_model.ini
+
+python test.py <user_id>
+```
+
+### Current Challenges:
+
+- How to recommend news articles to a user if he or she does not have any tweets? (Cold Start Problem)
+- How to evaluate the performance of a recommendation system?
+- Topic Modelling and retrieving users’ data are bottlenecks as they need to be updated very frequently.
+- Scale this model on large dataset
