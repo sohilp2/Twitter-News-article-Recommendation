@@ -136,15 +136,36 @@ We have used pretrained model from Textblob library that gives two results:
 - Subjective sentence expresses some personal feelings, views, beliefs, opinions, allegations, desires, beliefs, suspicions, and speculations where as Objective sentences are factual.
 
 
-**Topic Modeling**
+#### **Topic Modeling**
 
 ![Topic_model](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/Topic_model.png)
+
+Each topic is a distribution of words; each document is a mixture of corpus-wide topics; and each word is drawn from one of those topics.
+
+In reality, we only observe documents. The other structures are hidden variables. Our goal to infer the hidden variables.
+
 ![Topic_model2](https://github.com/jayshah5696/News_article_recommendation/blob/master/Images/Topic_model2.png)
+
+- Per-document topics proportions 𝜃_𝑑 is a multinomial distribution, which is generated from Dirichlet distribution parameterized by 𝛼.
+
+- Smilarly, topics 𝛽_𝑘 is also a multinomial distribution, which is generated from Dirichlet distribution parameterized by 𝜂.
+
+- For each word 𝑛, its topic 𝑍_(𝑑,𝑛) is drawn from document topic proportions 𝜃_𝑑.
+Then, we draw the word 𝑊_(𝑑,𝑛) from the topic 𝛽_𝑘, where 𝑘=𝑍_(𝑑,𝑛).
+
 
 **Application in our problem**
 
 - Using LDA Mallet model for topic modelling of each individual cluster. It is more efficient than Gensim’s LDA package requiring O(corpus).
 - Tuning of number of topic for each cluster accomplished using the coherence measure: using C_v measure (combining normalized pointwise similarity and cosine similarity)
+- There are 3 types of Topic Model gerneration
+  1. EM
+  2. Variational EM
+  3. Full Gibbs estimating LDA generative model
+
+The best performing coherence measure (the most left column) is a new combination found by systematic study of the conguration space of  coherence measures.
+
+This measure (CV) combines the indirect cosine measure with the NPMI and the boolean sliding window. This combination has been overlooked so far in the literature. Also, the best direct coherence measure (CP) found by our study is a new combination.
 
 **Topic Model Interactive Visualization**
 
@@ -152,6 +173,40 @@ We have used pretrained model from Textblob library that gives two results:
 
 [Interactive Vizualization of Topic model for Cluster 2](https://htmlpreview.github.io/?https://github.com/jayshah5696/News_article_recommendation/blob/master/lda.html)
 
+To use the visualization tool, click a circle in the left panel to select a topic, and the bar chart in the right panel will display the 30 most relevant terms for the selected topic, where we define the relevance of a term to a topic, given a weight parameter, 0 ≤ λ ≤ 1, as λ log(p(term | topic)) + (1 - λ) log(p(term | topic)/p(term)).
+
+The red bars represent the frequency of a term in a given topic, (proportional to p(term | topic)), and the blue bars represent a term's frequency across the entire corpus, (proportional to p(term)).
+
+Change the value of λ to adjust the term rankings -- small values of λ (near 0) highlight potentially rare, but exclusive terms for the selected topic, and large values of λ (near 1) highlight frequent, but not necessarily exclusive, terms for the selected topic.
+
+A user study described in our paper suggested that setting λ near 0.6 aids users in topic interpretation, although we expect this to vary across topics and data sets (hence our tool, which allows you to flexiby adjust λ).
+
+
 ### 5. Collect and analyze news articles
 
+We scraped recent news articles from different news channels using **python package : Newspaper3k**.
+
+They have different categories so we can train our algorithm using all topics. And our algorithm can satisfy wide range of topics giving good and similar recommendations.
+
+Newspaper is a Python module used for extracting and parsing newspaper articles. Newspaper use advance algorithms with web scrapping to extract all the useful text from a website. It works amazingly well on online newspapers websites.
+
 ### 6. Get user’s Twitter handle & Recommend news articles
+
+
+There are two main types of collaborative filtering: user-based and item-based. Note that the two are entirely symmetric (or more precisely the transpose of each other)
+1. **Content-based Filtering**
+  - Based on the tweets of a user, we can identify his or her interests.
+  - Based on the similarity of user’s interests and news article’s content/tags/headlines, we can recommend news articles.
+  - The approach has intuitive appeal: If a user posts  ten tweets having the word “Clinton,” user would probably like future “Clinton”-tagged news articles.
+  - Example- Amazon( Recommendation based on recently viwed items)
+  - Shortcomings of this method:
+    - Since, rare words have large weightage in the algorithm it sometimes degrades the performance.
+    - For example, if a user’s one tweet contains word “election”, he would get recommendation of news articles tagged election as it is a rare word and higher weightage is given to it.
+
+2. **Collaborative Filtering**
+  - Based on tweets of a user, we can identify a cluster in which user belongs to.
+  - Based on the topics of each cluster, we can recommend news article to a user
+  - For example, If a user tweets about election, he or she can be assigned to a cluster of users who have read and retweeted news articles that our user isn't aware of on the topic of election and we can recommend it to a user
+Example - Amazon (Customer who bought this item also bought)
+Shortcoming:
+ this approach fails at recommending newly-published, unexplored articles: articles that are relevant to groups of readers but hadn’t yet been read by any reader in that group.
